@@ -34,6 +34,7 @@ class Student(models.Model):
     lastName = models.CharField(max_length=250, verbose_name='Apellido')
     birthDate = models.DateField(verbose_name='Fecha de nacimiento')
     email = models.EmailField(verbose_name='Correo electrónico')
+    becado = models.BooleanField(verbose_name='estudiante becado')
 
 class Teacher(models.Model):
     name = models.CharField(max_length=250, verbose_name='Nombre')
@@ -52,4 +53,5 @@ class Registration(models.Model):
     siteId = models.ForeignKey(Site, on_delete=models.CASCADE, verbose_name='Sede')
     careerId = models.ForeignKey(Career, on_delete=models.CASCADE, verbose_name='Carrera')
     journeyId = models.ForeignKey(Journey, on_delete=models.CASCADE, verbose_name='Jornada')
+    
     registrationDate = models.DateField(verbose_name='Fecha de registro')
