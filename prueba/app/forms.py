@@ -1,5 +1,5 @@
 from django import forms
-from .models import Student, Journey, Career, Site, Teacher
+from .models import Student, Journey, Career, Site, Teacher, Subject
 
 
 class StudentForm(forms.ModelForm):
@@ -46,4 +46,13 @@ class teacherForm(forms.ModelForm):
         'lastname': forms.TextInput(attrs={'class': 'form-control'}),
         'state': forms.TextInput(attrs={'class': 'form-control'}),
         }
-
+class SubjectForm(forms.ModelForm):
+    class Meta:
+        model = Subject
+        fields = ['name','description','numberOfCredits','teacherId']
+        widgets ={
+        'name': forms.TextInput(attrs={'class': 'form-control'}),
+        'description': forms.TextInput(attrs={'class': 'form-control'}),
+        'numberOfCredits': forms.NumberInput(attrs={'class': 'form-control'}),
+        'teacherId': forms.Select(attrs={'class': 'form-control'}),
+        }

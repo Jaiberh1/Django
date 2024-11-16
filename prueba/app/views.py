@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import StudentForm, JourneyForm, CareerForm, SiteForm, teacherForm
+from .forms import StudentForm, JourneyForm, CareerForm, SiteForm, teacherForm, SubjectForm
 
 
 def menu_vista(request):
@@ -55,4 +55,15 @@ def teacher_create_view(request):
     else:
         form = teacherForm()
     return render(request, 'teacher_form.html', {'form': form})
+
+def subject_create_view(request):
+    if request.method == 'POST':
+        form = SubjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/teacher/success')
+    else:
+        form = teacherForm()
+    return render(request, 'subject_form.html', {'form': form})
+
 
