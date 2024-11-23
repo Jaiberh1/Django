@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carreras</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <div>
+        <a href="/">Regresar</a>
+        |
+        <a href="{% url 'career_create' %}">Crear carrera</a>
+        <h1>Lista de carreras</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Career in carreras %}
+                <tr>
+                    <td>{{ Career.name }}</td>
+                    
+                    <td>
+                        <td>
+                        <a href="{% url 'actualizar_carrera' id=Career.id %}">Actualizar</a>
+                        </td>
+                    </td>
+                    <td>
+                        <a href="{% url 'eliminar_carrera' id=Career.id %}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

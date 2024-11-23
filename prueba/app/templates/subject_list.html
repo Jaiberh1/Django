@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materias</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <div>
+        <a href="/">Regresar</a>
+        |
+        <a href="{% url 'subject_create' %}">Crear materia</a>
+        <h1>Lista de materias</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Créditos</th>
+                    <th>Profesor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Subject in materias %}
+                <tr>
+                    <td>{{ Subject.name }}</td>
+                    <td>{{ Subject.description }}</td>
+                    <td>{{ Subject.numberOfCredits }}</td>
+                    <td>{{ Subject.teacherId.name }} {{ Subject.teacherId.lastname }}</td>
+                    
+                    <td>
+                        <a href="{% url 'actualizar_materia' id=Subject.id %}">Actualizar</a>
+                    </td>
+
+                    <td>
+                        <a href="{% url 'eliminar_materia' id=Subject.id %}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

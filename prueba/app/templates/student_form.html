@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head> 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Estudiante</title>
+    <title>Formulario de Estudiante</title> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <style>
+        .form-control {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
+    <a href="{% url 'listar_estudiantes' %}">Regresar</a>
     <h1>Formulario de Estudiante</h1>
     <form method="post">
         {% csrf_token %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesores</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <div>
+        <a href="/">Regresar</a>
+        |
+        <a href="{% url 'teacher_create' %}">Crear profesor</a>
+        <h1>Lista de profesores</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Departamento</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Teacher in profesores %}
+                <tr>
+                    <td>{{ Teacher.name }}</td>
+                    <td>{{ Teacher.lastname }}</td>
+                    <td>{{ Teacher.state }}</td>
+                    
+                    <td>
+                        <a href="{% url 'actualizar_profesor' id=Teacher.id %}">Actailizar</a>
+                    </td>
+                    
+                    <td>
+                        <a href="{% url 'eliminar_profesor' id=Teacher.id %}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

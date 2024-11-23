@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Aplicación Django</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 </head>
+
 <body>
-    <h1>Bienvenido a Mi Aplicación Django</h1>
-    <p>Esta es la página de inicio.</p>
-    <a href="admin">admin<a>
+    <div class="container">
+        <h1>Bienvenido a Mi Aplicación De Registro De Materias</h1>
+        <p>Esta es la página de inicio.</p>
+        <h3>Menú</h3>
+        <hr>
+        <ul>
+            <li>
+                <a href="/admin" target="_blank" class="list-group-item list-group-item-action">Admin</a>
+            </li>
+            <li>
+                <a href="/students" class="list-group-item list-group-item-action">Estudiantes</a>
+            </li>
+            <li>
+                <a href="/subjects" class="list-group-item list-group-item-action">Materias</a>
+            </li>
+            <li>
+                <a href="/careers" class="list-group-item list-group-item-action">Carreras</a>
+            </li>
+            <li>
+                <a href="/teachers" class="list-group-item list-group-item-action">Profesores</a>
+            </li>
+            <li>
+                <a href="/registrations" class="list-group-item list-group-item-action">Inscripciones</a>
+            </li>
+        </ul>
+    </div>
 </body>
+
 </html>

@@ -3,7 +3,7 @@
 <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Materia</title>
+    <title>Formulario de Inscripcion</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <style>
         .form-control {
@@ -12,8 +12,8 @@
     </style>
 </head>
 <body>
-    <a href="{% url 'listar_materias' %}">Regresar</a>
-    <h1>Formulario de Materia</h1>
+    <a href="{% url 'listar_inscripciones' %}">Regresar</a>
+    <h1>Formulario de Inscripcion</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

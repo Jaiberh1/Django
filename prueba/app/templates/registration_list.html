@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripciones</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <div>
+        <a href="/">Regresar</a>
+        <a href="{% url 'registration_create' %}">Crear Fecha Inscripcion</a>
+        <h1>Lista de Inscripciones</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Estudiante</th>
+                    <th>Estudiante becado</th>
+                    <th>Materia</th>
+                    <th>Profesor</th>
+                    <th>Carrera</th>
+                    <th>Fcha de registro</th>
+                    <th>Sede</th>
+                    <th>Jornada</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Registration in inscripciones %}
+                <tr>
+                    <td>{{ Registration.studentId.name }} {{ Registration.studentId.lastName }}</td>
+                    <td>{{ Registration.studentId.becado  }}</td>
+                    <td>{{ Registration.subjectId.name }}</td>
+                    <td>{{ Registration.subjectId.teacherId.name }} {{ Registration.subjectId.teacherId.lastname }}</td>
+                    <td>{{ Registration.careerId.name }}</td>
+                    <td>{{ Registration.registrationDate }}</td>
+                    <td>{{ Registration.site }}</td>
+                    <td>{{ Registration.journey }}</td>
+                    
+                   <td>
+                        <a href="{% url 'actualizar_inscripcion' id=Registration.id %}">Actualizar</a>
+                    </td>
+                    
+                    <td>
+                        <a href="{% url 'eliminar_inscripcion' id=Registration.id %}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

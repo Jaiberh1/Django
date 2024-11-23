@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiantes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
+    <div>
+        <a href="/">Regresar</a>
+        |
+        <a href="{% url 'student_create' %}">Crear estudiante</a>
+        <h1>Lista de estudiantes</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cumpleaños</th>
+                    <th>Correo</th>
+                    <th>Becado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Student in estudiantes %}
+                <tr>
+                    <td>{{ Student.name }}</td>
+                    <td>{{ Student.lastName }}</td>
+                    <td>{{ Student.birthDate }}</td>
+                    <td>{{ Student.email }}</td>
+                    <td>{{ Student.becado }}</td>
+                    <td>
+                        <a href="{% url 'actualizar_estudiante' id=Student.id %}">Actualizar</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'eliminar_estudiante' id=Student.id %}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
