@@ -1,8 +1,12 @@
-from django.urls import path
-from .views import student_create_view, journey_create_view, Career_create_view, Site_create_view, teacher_create_view, subject_create_view
+from django.urls import path, include
+from django.contrib import admin
+from .views import eliminar_estudiante,listar_estudiantes,default,student_create_view, journey_create_view, Career_create_view, Site_create_view, teacher_create_view, subject_create_view, menu_vista
 from django.views.generic import TemplateView
 
 urlpatterns = [
+    path('', default, name='pagina_principal'),
+    path('eliminar/Student/<int:name>/', eliminar_estudiante,name='eliminar_estudiante'),
+    path('listar/Students', listar_estudiantes, name='listar_estudiantes'),
     path('student/new/', student_create_view, name='student_create'),
     path('student/success', TemplateView.as_view(template_name='success_stundent.html'), name='success_student'),
     path('journey/new/', journey_create_view, name='journey_create'),

@@ -1,10 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from .forms import StudentForm, JourneyForm, CareerForm, SiteForm, teacherForm, SubjectForm
-
-
-def menu_vista(request):
-    opciones = ['Opción 1', 'Opción 2', 'Opción 3', 'Opción 4']
-    return render(request, 'menu.html', {'opciones': opciones})
+from django.contrib import messages
+from .models import Student
 
 def student_create_view(request):
     if request.method == 'POST':
@@ -66,4 +63,18 @@ def subject_create_view(request):
         form = teacherForm()
     return render(request, 'subject_form.html', {'form': form})
 
+def menu_vista(request):
+    return render(request, 'menu.html')
 
+def default (request):
+    return render(request, 'index.html')
+
+def listar_estudiantes (request):
+    estudiantes = Student.objects.all()
+    return render(request,'listar_estudiantes.html', {'estudiantes': estudiantes})
+
+def eliminar_estudiante(request, name):
+    estudiante_a_eliminar = get_object_or_404(Student, id=name)
+    estudiante_a_eliminar.delete()  # Elimina el vehículo
+    messages.success(request, 'estudiante eliminado con éxito.')
+    return redirect('listar_estudiantes')  # Redirige a la lista de vehículos
